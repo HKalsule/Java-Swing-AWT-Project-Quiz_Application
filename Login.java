@@ -1,8 +1,11 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.*;
 import javax.swing.*;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener{
+    JButton rules,back;
+
     Login() {
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);  // Important when using setBounds()
@@ -27,17 +30,27 @@ public class Login extends JFrame {
         tfname.setFont(new Font("Mongolian Baiti",Font.BOLD, 40));
         add(tfname);
 
-        JButton rules = new JButton("Rules");
+        rules = new JButton("Rules");
         rules.setBounds(740,270,120,25);
+        rules.addActionListener(this);        
         add(rules);
 
-        JButton back = new JButton("Back");
+        back = new JButton("Back");
         back.setBounds(920,270,120,25);
+        back.addActionListener(this);
         add(back);
 
         setSize(1200, 500);
         setLocation(200, 200);
         setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent ae){
+        if (ae.getSource() == rules){
+            new Rules();
+        }   else if (ae.getSource() == back){
+                setVisible(false);
+        }
     }
 
     public static void main(String[] args) {
