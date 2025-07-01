@@ -46,6 +46,45 @@ This project creates a **Login Interface** using **Java Swing**, designed for a 
 
 ---
 
+# 📜 Rules Screen – Java Swing
+
+This component defines a **Rules** window for the **Simple Minds** quiz application using **Java Swing**. It serves as a dedicated space for displaying quiz rules or instructions to the user.
+
+---
+
+## 📂 File: `Rules.java`
+
+### ✅ Features
+
+- Displays a window titled **"Rules"**
+- White background for a clean interface
+- Custom heading with large, bold font (`Mongolian Baiti`)
+- Fixed-size window with manual positioning using `setBounds()`
+- Intended as a follow-up screen from the Login interface
+
+---
+
+## 🧱 GUI Components Used
+
+| Component   | Purpose                                |
+|-------------|----------------------------------------|
+| `JFrame`    | Acts as the main container             |
+| `JLabel`    | Displays the "Rules" heading           |
+| `Font`      | Sets the font family, style, and size  |
+| `Color`     | Sets background color to white         |
+| `setBounds()` | Positions components manually       |
+
+---
+
+## 🚧 Planned Enhancements
+
+- Add multiple lines of rules (via `JLabel` or `JTextArea`)
+- Style text with HTML or rich formatting
+- Include "Start Quiz" and "Back" buttons
+- Connect this screen to the `Login.java` screen using button actions
+
+---
+
 ## 🧪 How to Run
 
 1. Ensure Java is installed and configured.
