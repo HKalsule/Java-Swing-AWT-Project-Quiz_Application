@@ -5,6 +5,7 @@ import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener{
     JButton rules,back;
+    JTextField tfname;
 
     Login() {
         getContentPane().setBackground(Color.WHITE);
@@ -25,7 +26,7 @@ public class Login extends JFrame implements ActionListener{
         name.setFont(new Font("Mongolian Baiti",Font.BOLD, 20));
         add(name);
 
-        JTextField tfname = new JTextField();
+        tfname = new JTextField();
         tfname.setBounds(740,200,300,25);
         tfname.setFont(new Font("Mongolian Baiti",Font.BOLD, 40));
         add(tfname);
@@ -47,7 +48,8 @@ public class Login extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent ae){
         if (ae.getSource() == rules){
-            new Rules();
+            String name = tfname.getText();
+            new Rules(name);
         }   else if (ae.getSource() == back){
                 setVisible(false);
         }
