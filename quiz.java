@@ -8,20 +8,25 @@ public class quiz extends JFrame {
 
     String questions[][] = new String[10][5];
     String answers[][] = new String[10][2];
+    String useranswers[][] = new String[10][1];
 
     JLabel number,question;
     JRadioButton opt1,opt2,opt3,opt4;
 
+    ButtonGroup groupoptions;
+
     public static int timer = 15;
+    public static int ans_given = 0;
+    public static int count = 0;
 
     quiz() {
         setBounds(50, 0, 1000, 800);
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
 
-        ImageIcon i1 = new ImageIcon("img3.jpg");
+        ImageIcon i1 = new ImageIcon("img4.jpg");
         JLabel label = new JLabel(i1);
-        label.setBounds(0, 0, i1.getIconWidth(), 400);
+        label.setBounds(0, 0, 1000, 400);
         add(label);
 
         number = new JLabel();
@@ -121,7 +126,7 @@ public class quiz extends JFrame {
         opt4.setBounds(170,650,700,30);
         add(opt4);
 
-        ButtonGroup groupoptions = new ButtonGroup();
+        groupoptions = new ButtonGroup();
         groupoptions.add(opt1);
         groupoptions.add(opt2);
         groupoptions.add(opt3);
@@ -146,7 +151,7 @@ public class quiz extends JFrame {
         Submit.setEnabled(false);
         add(Submit);
 
-        start(1);
+        start(count);
 
         setVisible(true);
     }
@@ -159,6 +164,8 @@ public class quiz extends JFrame {
     
     if(timer>0){
     g.drawString(time, 750, 500); 
+    } else {
+        g.drawString("Times Up",750,500);
     }
     timer --;
 
@@ -168,6 +175,19 @@ public class quiz extends JFrame {
     } catch (Exception e){
         e.printStackTrace();
     }
+    if(ans_given == 1){
+        ans_given = 0;
+        timer = 15;
+    } else if(timer<0){
+        timer = 15;
+        if(groupoptions.getSelection() == null){
+            useranswers[count][0] = ""; 
+        }else{
+            useranswers[count][0] = groupoptions.getSelection().getActionCommand(); 
+        }
+        count++;
+        start(count);
+    }
 }
 
 
@@ -175,9 +195,17 @@ public class quiz extends JFrame {
         question.setText("" + (count + 1) + ".");
         question.setText(questions[count][0]);
         opt1.setText(questions[count][1]);
+        opt1.setActionCommand(questions[count][1]);
+
         opt2.setText(questions[count][2]);
+        opt2.setActionCommand(questions[count][2]);
+
         opt3.setText(questions[count][3]);
+        opt3.setActionCommand(questions[count][3]);
+
         opt4.setText(questions[count][4]);
+        opt4.setActionCommand(questions[count][4]);
+
     }
     public static void main(String[] args) {
         new quiz();
