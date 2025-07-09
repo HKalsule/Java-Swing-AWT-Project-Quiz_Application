@@ -29,8 +29,9 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
   - 10 Multiple-choice questions
   - 4 options per question (radio buttons)
   - Dynamic navigation buttons (`Next`, `Submit`, `50-50`)
-  - Visual timer countdown per question
-  - `paint()` method updates timer every second
+  - Visual countdown timer per question using `paint()` method
+  - Auto-switch to next question after timeout
+  - Tracks user-selected answers with `ActionCommand`
 
 ---
 
@@ -58,14 +59,17 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
 ---
 
 ### 🧠 Quiz Screen (`quiz.java`)
-| UI Element         | Description                               |
-|--------------------|-------------------------------------------|
-| `JLabel`           | Displays question number and text         |
-| `JRadioButton`     | 4 options per question                    |
-| `JButton` Next     | Navigate to next question (TBD logic)     |
-| `JButton` Submit   | Submit quiz (UI only for now)             |
-| `JButton` 50-50    | Lifeline (not implemented yet)            |
-| `Graphics`         | Timer displayed with real-time updates    |
+| UI Element           | Description                                                |
+|----------------------|------------------------------------------------------------|
+| `JLabel`             | Displays question number and text                          |
+| `JRadioButton`       | 4 options per question (part of `ButtonGroup`)             |
+| `JButton` Next       | Navigate to next question (logic TBD)                      |
+| `JButton` Submit     | Submits answers (UI only, no scoring logic yet)            |
+| `JButton` 50-50      | Lifeline feature (not implemented yet)                     |
+| `Graphics`           | Renders red timer using `paint()` method                   |
+| `useranswers[][]`    | Stores the user's selected answers                         |
+| `ActionCommand`      | Helps store selected option from radio buttons             |
+| Auto-Timer Switch    | Automatically goes to next question after 15 seconds       |
 
 ---
 
@@ -76,8 +80,9 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
 | `Login.java` | Main login screen                  |
 | `Rules.java` | Shows rules with back/start flow   |
 | `quiz.java`  | Main quiz interface                |
-| `img1.jpg`   | Image for the left pane in Login   |
-| `img3.jpg`   | Banner image used in quiz window   |
+| `img1.jpg`   | Image for login panel              |
+| `img3.jpg`   | Banner for original quiz UI        |
+| `img4.jpg`   | Updated banner for quiz interface  |
 
 ---
 
