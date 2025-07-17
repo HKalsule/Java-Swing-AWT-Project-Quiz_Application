@@ -4,10 +4,10 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
 
 ---
 
-## ✅ Project Status: Functional and Working
+## ✅ Project Status: Fully Functional and Working
 
 > 🟢 The application now supports:
-> - Navigation between **Login** and **Rules** screens.
+> - Navigation between **Login**,**Rules**,**Quiz** and **Score** screens.
 > - Personalized quiz rules.
 > - Quiz Interface with 10 dynamic questions, options, and timer.
 
@@ -33,6 +33,13 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
   - Auto-switch to next question after timeout
   - Tracks user-selected answers with `ActionCommand`
 
+- 🏁 **Score Interface**
+  - Final result shown on a custom GUI frame
+  - Personalized score message (`Hi [User], your score is: X/10`)
+  - Restart or exit options
+
+---
+
 ---
 
 ## 🖼️ Interface Layout
@@ -40,7 +47,7 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
 ### 🔐 Login Screen (`Login.java`)
 | UI Element         | Description                               |
 |--------------------|-------------------------------------------|
-| `ImageIcon`        | Displays `img1.jpg` on the left            |
+| `ImageIcon`        | Displays `img1.jpg` on the left           |
 | `JLabel` Heading   | "Simple Minds" title                      |
 | `JTextField`       | Enter your name                           |
 | `JButton` Rules    | Proceeds to the rules screen              |
@@ -53,7 +60,7 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
 |--------------------|-------------------------------------------|
 | `JLabel` Heading   | Greets user with name                     |
 | `JLabel` Body      | Shows 10 instructions (HTML formatted)    |
-| `JButton` Start    | Placeholder for quiz start (to be linked) |
+| `JButton` Start    | Starts the quiz                           |
 | `JButton` Back     | Returns to login screen                   |
 
 ---
@@ -63,15 +70,28 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
 |----------------------|------------------------------------------------------------|
 | `JLabel`             | Displays question number and text                          |
 | `JRadioButton`       | 4 options per question (part of `ButtonGroup`)             |
-| `JButton` Next       | Navigate to next question (logic TBD)                      |
-| `JButton` Submit     | Submits answers (UI only, no scoring logic yet)            |
-| `JButton` 50-50      | Lifeline feature (not implemented yet)                     |
-| `Graphics`           | Renders red timer using `paint()` method                   |
-| `useranswers[][]`    | Stores the user's selected answers                         |
-| `ActionCommand`      | Helps store selected option from radio buttons             |
-| Auto-Timer Switch    | Automatically goes to next question after 15 seconds       |
+| `JButton` Next       | Navigate to next question                                  |
+| `JButton` Submit     | Submits answers and moves to score screen                  |
+| `JButton` 50-50      | Lifeline feature (optional, not implemented)               |
+| `Graphics`           | Renders countdown timer using `paint()` method             |
+| `useranswers[][]`    | Stores user's selected answers                             |
+| `ActionCommand`      | Captures selected option                                   |
+| Auto-Timer Switch    | Automatically moves to next question after timeout         |
 
 ---
+
+### 🏁 Score Screen (`Score.java`)
+| UI Element         | Description                                                  |
+|--------------------|--------------------------------------------------------------|
+| `JLabel` Heading   | Displays a thank-you message with the user’s name           |
+| `JLabel` Score     | Shows the final score in `X/10` format                      |
+| `ImageIcon`        | (Optional) Trophy or badge image for decoration             |
+| `JButton` Again    | Restarts the quiz by opening the login screen               |
+| `JButton` Exit     | Closes the application                                       |
+| `JFrame` Styling   | Clean white background, centered layout, `Tahoma` font      |
+
+---
+
 
 ## 📂 File Overview
 
@@ -80,6 +100,7 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
 | `Login.java` | Main login screen                  |
 | `Rules.java` | Shows rules with back/start flow   |
 | `quiz.java`  | Main quiz interface                |
+| `Score.java` | Final score display screen         |
 | `img1.jpg`   | Image for login panel              |
 | `img3.jpg`   | Banner for original quiz UI        |
 | `img4.jpg`   | Updated banner for quiz interface  |
@@ -88,18 +109,19 @@ This project is a Java Swing-based **Login, Rules, and Quiz Interface** for a qu
 
 ## 🧱 Components Used
 
-| Swing Component | Purpose                                  |
-|------------------|------------------------------------------|
-| `JFrame`         | Main window container                    |
-| `JLabel`         | Text/image display                       |
-| `JTextField`     | Accepts user name                        |
-| `JButton`        | Interactive buttons                      |
-| `JRadioButton`   | Option selections                        |
-| `ButtonGroup`    | Ensures single selection per question    |
-| `ImageIcon`      | Load image for GUI                       |
-| `Font`           | Custom fonts for headings/texts          |
-| `Color`          | Background color settings                |
-| `ActionListener` | Enables button interactivity             |
-| `Graphics`       | Renders timer countdown                  |
+| Swing Component   | Purpose                                  |
+|-------------------|------------------------------------------|
+| `JFrame`          | Main window container                    |
+| `JLabel`          | Text/image display                       |
+| `JTextField`      | Accepts user name                        |
+| `JButton`         | Interactive buttons                      |
+| `JRadioButton`    | Option selections                        |
+| `ButtonGroup`     | Ensures single selection per question    |
+| `ImageIcon`       | Load image for GUI                       |
+| `Font`            | Custom fonts for headings/texts          |
+| `Color`           | Background color settings                |
+| `ActionListener`  | Enables button interactivity             |
+| `Graphics`        | Renders timer countdown (Quiz screen)    |
 
 ---
+
